@@ -6,49 +6,51 @@ return choice;
 
 function getPlayerSelection() {
     let playerChoice = prompt("Choose Rock, Paper, or Scissors").toLowerCase();
-    if (playerChoice == "rock"){
-return playerChoice;
-}   else if (playerChoice == "paper"){
-return playerChoice;
-}   else if (playerChoice == "scissors"){
-return playerChoice;
-}   else {
-return alert("Please refresh and select again.");
-}    
+    switch (playerChoice) {
+        case "rock":
+        case "paper":
+        case "scissors":
+        return playerChoice;
+    default:
+        return alert("Please refresh and choose again.");
+    }
 }
 
 function playRound(playerSelection, computerSelection) {
-// Code for comparing computer and player selection goes here
+    let compare = playerSelection + computerSelection
+    switch (compare) {
+        case "rockpaper":
+        case "paperscissors":
+        case "scissorsrock":
+    return console.log(computerSelection + " beats " + playerSelection + ", you lose!")
+    break;
+        case "rockrock":
+        case "paperpaper":
+        case "scissorsscissors":
+    return console.log("Tie, try to loop here")
+    break;
+    default:
+        return console.log(playerSelection + " beats " + computerSelection + ", you win!")
+    }
 }
 
 let playerSelection = getPlayerSelection();
-const computerSelection = getComputerChoice();
+let computerSelection = getComputerChoice();
 
-
-
-
-
-
-
-//Current issue** 
-//error with .toLowerCase at the end of selection, figure out why later
-
-
-
-
+console.log(playRound(playerSelection, computerSelection));
 
 /*
-notes
-For playRound function 
-Get Computerselection - lowercase
-Get Playerselection - lowercase
-(if)
-Compare for all player loses, use %% and ||
-: ex computer rock && player scissors || computer... ect
-(else if)
-Compare for player wins
-(else)
-draw
+Notes
 
-Return should have (winner var) beats (loser var), (you win or you lose)
+Rock paper scissors rules
+Rock > Scissors
+Scissors > Paper
+Paper > Rock
+
+To do:
+Remove console.logs on playround later on
+Learn loop for tie results and wrong player input
+
+fx game: Use playround inside of this function, keeps score and reports winner
+
 */
